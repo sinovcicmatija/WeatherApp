@@ -1,0 +1,7 @@
+@WeatherAPI_HostAddress = http://localhost:5067
+
+GET {{WeatherAPI_HostAddress}}/api/City/cityData?name=Zagreb
+Accept: application/json
+
+
+###

@@ -1,0 +1,68 @@
+h1 {
+  padding: 0 1rem;
+}
+
+h2 {padding: 1rem;}
+
+mat-toolbar{
+  background-color: grey;
+  color: white;
+  position: fixed;
+  top:0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+
+  .spacer {
+    flex-grow: 1; 
+  }
+
+  mat-icon{
+    color:white;
+  }
+  mat-form-field {
+    padding-top:1rem;
+    color: white;
+  }
+  mat-label{
+    color: white;
+  }
+}
+
+mat-sidenav-container {
+  height:100%;
+}
+
+mat-sidenav {
+  width: 80px;
+  padding-top: 3.5rem;
+  @media screen and (min-width: 600px) {
+    padding-top: 4rem;
+  }
+
+  .entry{
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding:0.75rem;
+  }
+
+}
+
+.expanded {
+  width: 300px;   
+}
+
+mat-sidenav-content{
+  transition: margin-left 0.1s ease-out;
+  padding-top: 3.5rem;
+  @media screen and (min-width: 600px) {
+      padding-top: 4.5rem;
+  }
+  @media screen and (max-width: 800px) {
+    padding-top: 4rem;
+    padding-left: 1rem;
+}
+}
+
