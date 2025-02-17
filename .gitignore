@@ -1,1 +1,12 @@
-".vs/\nbin/\nobj/\n*.suo\n*.user\n*.cache\n*.sqlite\n*.dll\n*.exe" 
+# Ignoriraj Visual Studio fajlove
+.vs/
+*.suo
+*.user
+*.cache
+*.sqlite
+
+# Ignoriraj build fajlove
+bin/
+obj/
+*.dll
+*.exe
