@@ -41,7 +41,7 @@ namespace WeatherAPI.Controllers
             {
                 Console.WriteLine(ex.Message);
                 return StatusCode(500, $"Greška na serveru");
-            } //test commit
+            } 
         }
     }
 }

@@ -30,3 +30,36 @@ C:\Users\matek\OneDrive\Radna površina\ASP .NET - ucenje\WeatherAPI\WeatherAPI\
 C:\Users\matek\OneDrive\Radna površina\ASP .NET - ucenje\WeatherAPI\WeatherAPI\obj\Debug\net8.0\WeatherAPI.pdb
 C:\Users\matek\OneDrive\Radna površina\ASP .NET - ucenje\WeatherAPI\WeatherAPI\obj\Debug\net8.0\WeatherAPI.genruntimeconfig.cache
 C:\Users\matek\OneDrive\Radna površina\ASP .NET - ucenje\WeatherAPI\WeatherAPI\obj\Debug\net8.0\ref\WeatherAPI.dll
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\bin\Debug\net8.0\appsettings.Development.json
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\bin\Debug\net8.0\appsettings.json
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\bin\Debug\net8.0\WeatherAPI.exe
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\bin\Debug\net8.0\WeatherAPI.deps.json
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\bin\Debug\net8.0\WeatherAPI.runtimeconfig.json
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\bin\Debug\net8.0\WeatherAPI.dll
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\bin\Debug\net8.0\WeatherAPI.pdb
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\WeatherAPI.csproj.AssemblyReference.cache
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\WeatherAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\WeatherAPI.AssemblyInfoInputs.cache
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\WeatherAPI.AssemblyInfo.cs
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\WeatherAPI.csproj.CoreCompileInputs.cache
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\WeatherAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\WeatherAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\WeatherAPI.sourcelink.json
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\staticwebassets.build.json
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\staticwebassets.development.json
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\staticwebassets\msbuild.WeatherAPI.Microsoft.AspNetCore.StaticWebAssets.props
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\staticwebassets\msbuild.build.WeatherAPI.props
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.WeatherAPI.props
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.WeatherAPI.props
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\staticwebassets.pack.json
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\scopedcss\bundle\WeatherAPI.styles.css
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\WeatherAPI.csproj.CopyComplete
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\WeatherAPI.dll
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\refint\WeatherAPI.dll
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\WeatherAPI.pdb
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\WeatherAPI.genruntimeconfig.cache
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\ref\WeatherAPI.dll
