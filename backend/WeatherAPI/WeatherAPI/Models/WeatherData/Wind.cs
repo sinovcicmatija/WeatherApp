@@ -11,6 +11,6 @@ namespace WeatherAPI.Models.WeatherData
         public int Deg { get; set; }
 
         [JsonPropertyName("gust")]
-        public double Gust { get; set; }
+        public double? Gust { get; set; }
     }
 }

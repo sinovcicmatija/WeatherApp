@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using Microsoft.Extensions.Logging;
+using System.Text.Json;
 using WeatherAPI.Interfaces;
 using WeatherAPI.Models.WeatherData;
 
@@ -7,19 +8,23 @@ namespace WeatherAPI.Services
     public class WeatherService : IWeatherService
     {
         private readonly WeatherApiClientService _apiClient;
+        private readonly ILogger<WeatherService> _logger;
 
-        public WeatherService(WeatherApiClientService apiClient)
+        public WeatherService(ILogger<WeatherService> logger, WeatherApiClientService apiClient)
         {
             _apiClient = apiClient;
+            _logger = logger;
         }
 
-        public async Task<List<WeatherData>> GetCityWeatherDataAsync(double lat, double lon)
+        public async Task<WeatherData?> GetCityWeatherDataAsync(double lat, double lon)
         {
             var response = await _apiClient.GetCityWeatherDataAsync(lat, lon);
             Console.Write(response);
 
-            var weatherData = JsonSerializer.Deserialize<List<WeatherData>>(response);
-            return weatherData ?? new List<WeatherData>();
+            _logger.LogInformation("RAW JSON RESPONSE: {Response}", response);
+
+            var weatherData = JsonSerializer.Deserialize<WeatherData>(response);
+            return weatherData;
         }
         public string GetWindDirection(int deg)
         {

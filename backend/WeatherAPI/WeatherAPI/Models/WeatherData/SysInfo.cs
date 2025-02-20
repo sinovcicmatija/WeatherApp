@@ -11,6 +11,6 @@ namespace WeatherAPI.Models.WeatherData
         public long Sunrise { get; set; }
 
         [JsonPropertyName("sunset")]
-        public long SunSet { get; set; }
+        public long Sunset { get; set; }
     }
 }
