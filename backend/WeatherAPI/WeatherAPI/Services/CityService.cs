@@ -19,7 +19,6 @@ namespace WeatherAPI.Services
             Console.WriteLine(response);
 
             var cities = JsonSerializer.Deserialize<List<CityItem>>(response);
-
             return cities ?? new List<CityItem>();
         }
     }
