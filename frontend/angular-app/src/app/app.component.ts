@@ -1,6 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { debounceTime, distinctUntilChanged, filter, Observable, startWith, switchMap } from 'rxjs';
+import { FormControl } from '@angular/forms';
+import { City } from './models/city.model';
+import { ApiService } from './services/api.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +17,12 @@ export class AppComponent {
   isMobile = true;
   isCollapsed = true;
 
-  constructor(private observer: BreakpointObserver) {}
+  searchControl = new FormControl();
+  cities$: Observable<City[]> | null = null;
+
+  selectedCity: string = "";
+
+  constructor(private observer: BreakpointObserver, private apiService: ApiService) {}
 
   ngOnInit() {
     this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
@@ -23,6 +32,18 @@ export class AppComponent {
         this.isMobile = false;
       }
     });
+
+    this.cities$ = this.searchControl.valueChanges.pipe(
+      debounceTime(500), 
+      distinctUntilChanged(), 
+      filter(value => value && value.trim().length > 0),
+      switchMap(value => this.apiService.getCityData(value)),
+    );
+  }
+
+  onCitySelected(event: any) {
+    this.selectedCity = event.option.value; 
+    console.log("Odabrani grad:", this.selectedCity);
   }
 
   toggleSidenav() {
