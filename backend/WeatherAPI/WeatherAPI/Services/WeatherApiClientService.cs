@@ -29,7 +29,7 @@ namespace WeatherAPI.Services
 
         public async Task<string> GetCityWeatherDataAsync(double lat, double lon)
         {
-            var url = $"{_currentWeatherUrl}weather?lat={lat}&lon={lon}&appid={_apiKey}";
+            var url = $"{_currentWeatherUrl}weather?lat={lat}&lon={lon}&appid={_apiKey}&units=metric";
             return await _httpClient.GetStringAsync(url);
         }
     }
