@@ -20,5 +20,6 @@ export class ApiService {
     {
         return this.http.get<WeatherData[]>(`${apiurl}/Weather/cityWeather?lat=${lat}&lon=${lon}`);
     }
+      
 }
 

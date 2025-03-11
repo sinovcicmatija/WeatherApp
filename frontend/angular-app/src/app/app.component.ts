@@ -36,15 +36,22 @@ export class AppComponent {
     this.cities$ = this.searchControl.valueChanges.pipe(
       debounceTime(500), 
       distinctUntilChanged(), 
-      filter(value => value && value.trim().length > 0),
+      filter(value => typeof value === 'string' && value.trim().length > 0),
       switchMap(value => this.apiService.getCityData(value)),
     );
   }
 
   onCitySelected(event: any) {
-    this.selectedCity = event.option.value; 
-    console.log("Odabrani grad:", this.selectedCity);
+    const selectedCity: City = event.option.value; 
+    console.log("Odabrani grad:", selectedCity);
+
+    localStorage.setItem("selectedCity", JSON.stringify(selectedCity));
   }
+
+  displayFn(city: City | null): string {
+    return city?.name ?? '';
+  }
+
 
   toggleSidenav() {
     if(this.isMobile){
