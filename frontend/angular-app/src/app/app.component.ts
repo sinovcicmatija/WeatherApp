@@ -5,6 +5,7 @@ import { debounceTime, distinctUntilChanged, filter, Observable, startWith, swit
 import { FormControl } from '@angular/forms';
 import { City } from './models/city.model';
 import { ApiService } from './services/api.service';
+import { CityService } from './services/city.service';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +23,7 @@ export class AppComponent {
 
   selectedCity: string = "";
 
-  constructor(private observer: BreakpointObserver, private apiService: ApiService) {}
+  constructor(private observer: BreakpointObserver, private apiService: ApiService, private cityService: CityService) {}
 
   ngOnInit() {
     this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
@@ -44,8 +45,7 @@ export class AppComponent {
   onCitySelected(event: any) {
     const selectedCity: City = event.option.value; 
     console.log("Odabrani grad:", selectedCity);
-
-    localStorage.setItem("selectedCity", JSON.stringify(selectedCity));
+    this.cityService.updateSelectedCity(selectedCity);
   }
 
   displayFn(city: City | null): string {
