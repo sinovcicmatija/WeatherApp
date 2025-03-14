@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CityService } from '../services/city.service';
+import { City } from '../models/city.model';
+import { WeatherData } from '../models/weather.model';
 
 @Component({
   selector: 'app-start-page',
@@ -7,6 +10,28 @@ import { Component } from '@angular/core';
   standalone: false
 })
 export class StartPageComponent {
+  selectedCity: City | null = null;
+  weatherData: WeatherData | null = null;
+
+  constructor(private cityService: CityService) {}
+
+  ngOnInit()
+  {
+    this.cityService.selectedCity$.subscribe(city => {
+      if(city) {
+        this.selectedCity = city;
+        console.log("Odabrani grad u StartPageComponent:", city);
+      }
+    })
+
+    this.cityService.weatherData$.subscribe(data => {
+      if (data) {
+        this.weatherData = data;
+        console.log("Primljeni podaci o vremenu:", data);
+      }
+    })
+    
+  }
   
 
   hourlyForecast = [
@@ -27,6 +52,5 @@ export class StartPageComponent {
     { day: "Četvrtak", icon: "url", minTemp: 9, maxTemp: 19, rainChance: 25 },
     { day: "Petak", icon: "url", minTemp: 11, maxTemp: 22, rainChance: 10 },
   ];
-  
 
 }

@@ -1,18 +1,20 @@
-<div class="weather-container">
+<div class="weather-container" *ngIf="weatherData">
   <!-- Glavna kartica - Grad, temperatura, ikona, opis -->
   <mat-card class="weather-card-main">
     <mat-card-header>
-      <mat-card-title>Zagreb, HR <img src="https://flagsapi.com/HR/flat/32.png"></mat-card-title>
+      <mat-card-title>{{selectedCity?.name}}, {{weatherData.sys.country}} <img [src]="'https://flagsapi.com/' + weatherData.sys.country + '/flat/32.png'" alt="Country Flag">
+      </mat-card-title>
     </mat-card-header>
 
     <mat-card-content>
       <div class="main-weather">
         <div class="weather-temp">
-          <img [src]="'https://openweathermap.org/img/wn/10d@2x.png'" alt="Weather Icon">
-          <p>15°</p>
+          <img [src]="'https://openweathermap.org/img/wn/' + weatherData.weather[0].icon + '@2x.png'" alt="Weather Icon">
+
+          <p>{{weatherData.main.temp}}</p>
         </div>
         <div class="weather-info">
-          <p>10° / 2°  Čini se kao 5°</p>
+          <p>{{weatherData.main.temp_min}} / {{weatherData.main.temp_max}}  Čini se kao {{weatherData.main.feels_like}}</p>
         </div>
       </div>
     </mat-card-content>
@@ -25,7 +27,7 @@
         <mat-icon>water_drop</mat-icon>
         <mat-card-title>Vlaga</mat-card-title>
       </mat-card-header>
-      <mat-card-content><p>56%</p></mat-card-content>
+      <mat-card-content><p>{{weatherData.main.humidity}}</p></mat-card-content>
     </mat-card>
 
     <mat-card class="weather-card-detail">
@@ -33,7 +35,7 @@
         <mat-icon>air</mat-icon>
         <mat-card-title>Vjetar</mat-card-title>
       </mat-card-header>
-      <mat-card-content><p>22 km/h</p></mat-card-content>
+      <mat-card-content><p>{{weatherData.wind.speed}} m/s</p></mat-card-content>
     </mat-card>
 
     <mat-card class="weather-card-detail">
@@ -41,7 +43,7 @@
         <mat-icon>speed</mat-icon>
         <mat-card-title>Tlak</mat-card-title>
       </mat-card-header>
-      <mat-card-content><p>1020 hPa</p></mat-card-content>
+      <mat-card-content><p>{{weatherData.main.pressure}} hPa</p></mat-card-content>
     </mat-card>
 
     <mat-card class="weather-card-detail">
@@ -49,7 +51,7 @@
         <mat-icon>remove_red_eye</mat-icon>
         <mat-card-title>Vidljivost</mat-card-title>
       </mat-card-header>
-      <mat-card-content><p>6,44 km</p></mat-card-content>
+      <mat-card-content><p>{{weatherData.visibility}}</p></mat-card-content>
     </mat-card>
 
    
@@ -64,7 +66,7 @@
   
       <!-- Drugi stupac -->
       <div class="sun-time">
-        <p>07:00 - 21:00</p>
+        <p>{{ weatherData.sys.sunrise * 1000 | date:'HH:mm' }} - {{ weatherData.sys.sunset * 1000 | date:'HH:mm' }}</p>
       </div>
   
       <!-- Treći stupac -->

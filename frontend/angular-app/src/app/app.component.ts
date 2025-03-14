@@ -43,9 +43,12 @@ export class AppComponent {
   }
 
   onCitySelected(event: any) {
+    const oldCity: City | null = localStorage.getItem('selectedCity') 
+        ? JSON.parse(localStorage.getItem('selectedCity')!) 
+        : null;
     const selectedCity: City = event.option.value; 
     console.log("Odabrani grad:", selectedCity);
-    this.cityService.updateSelectedCity(selectedCity);
+    this.cityService.updateSelectedCity(selectedCity, oldCity);
   }
 
   displayFn(city: City | null): string {

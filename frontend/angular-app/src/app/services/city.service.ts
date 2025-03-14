@@ -27,9 +27,10 @@ export class CityService {
     }
   }
 
-  updateSelectedCity(city: City) {
+  updateSelectedCity(city: City, oldCity: City | null) {
     localStorage.setItem('selectedCity', JSON.stringify(city));
     this.selectedCitySubject.next(city);
+    this.fetchWeatherData(city.lat, city.lon, oldCity);
   }
 
   updateWeatherData(weatherData: any) {
@@ -39,23 +40,38 @@ export class CityService {
     this.weatherDataSubject.next(weatherData);
   }
 
-  shouldFetchNewWeatherData(): boolean {
+
+  fetchWeatherData(lat: number, lon: number, oldCity: City | null) {
     const cachedData = localStorage.getItem('weatherData');
-    if (!cachedData) return true; 
-  
+
+    if (!oldCity || oldCity.lat !== lat || oldCity.lon !== lon) {
+        console.log("Grad se promijenio ili nema starog grada, dohvaćam nove podatke...");
+        this.apiService.getWeatherData(lat, lon).subscribe(data => {
+            this.updateWeatherData(data);
+        });
+        return;
+    }
+
+    if (!cachedData) {
+        console.log("Nema cache podataka, dohvaćam nove...");
+        this.apiService.getWeatherData(lat, lon).subscribe(data => {
+            this.updateWeatherData(data);
+        });
+        return;
+    }
+
     const { timestamp } = JSON.parse(cachedData);
     const now = new Date().getTime();
-    return now - timestamp > 10 * 60 * 1000; 
-  }
 
-  fetchWeatherData(lat: number, lon: number) {
-    if (this.shouldFetchNewWeatherData()) {
-      this.apiService.getWeatherData(lat, lon).subscribe(data => {
-        this.updateWeatherData(data);
-      });
+    if (now - timestamp > 10 * 60 * 1000) {
+        console.log("Cache podaci su stariji od 10 minuta, dohvaćam nove...");
+        this.apiService.getWeatherData(lat, lon).subscribe(data => {
+            this.updateWeatherData(data);
+        });
     } else {
-      const cachedData = JSON.parse(localStorage.getItem('weatherData')!);
-      this.weatherDataSubject.next(cachedData.weatherData);
+        console.log("Koristim cache podatke...");
+        this.weatherDataSubject.next(JSON.parse(cachedData).weatherData);
     }
-  }
+}
+
 }
