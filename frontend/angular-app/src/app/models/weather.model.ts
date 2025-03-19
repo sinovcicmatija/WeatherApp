@@ -35,8 +35,8 @@ export interface Coord {
   
   export interface SysInfo {
     country: string;
-    sunrise: number;
-    sunset: number;
+    sunriseLocalTime: string;
+    sunsetLocalTime: string;
   }
   
   export interface WeatherData {

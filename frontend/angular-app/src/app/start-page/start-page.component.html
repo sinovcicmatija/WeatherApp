@@ -11,10 +11,10 @@
         <div class="weather-temp">
           <img [src]="'https://openweathermap.org/img/wn/' + weatherData.weather[0].icon + '@2x.png'" alt="Weather Icon">
 
-          <p>{{weatherData.main.temp}}</p>
+          <p>{{weatherData.main.temp | number: '1.0-0'}}°</p>
         </div>
         <div class="weather-info">
-          <p>{{weatherData.main.temp_min}} / {{weatherData.main.temp_max}}  Čini se kao {{weatherData.main.feels_like}}</p>
+          <p>{{weatherData.main.temp_min | number: '1.0-0'}}° / {{weatherData.main.temp_max | number: '1.0-0'}}°  Čini se kao {{weatherData.main.feels_like | number: '1.0-0'}}°</p>
         </div>
       </div>
     </mat-card-content>
@@ -51,25 +51,23 @@
         <mat-icon>remove_red_eye</mat-icon>
         <mat-card-title>Vidljivost</mat-card-title>
       </mat-card-header>
-      <mat-card-content><p>{{weatherData.visibility}}</p></mat-card-content>
+      <mat-card-content><p>{{weatherData.visibility / 1000 | number:'1.1-1'}} km</p></mat-card-content>
     </mat-card>
 
    
   </div>
   <mat-card class="weather-card-sun">
     <div class="sun-info">
-      <!-- Prvi stupac -->
+
       <div class="sun-column">
         <mat-icon class="sun-icon">wb_sunny</mat-icon>
         <p>Izlazak sunca</p>
       </div>
   
-      <!-- Drugi stupac -->
       <div class="sun-time">
-        <p>{{ weatherData.sys.sunrise * 1000 | date:'HH:mm' }} - {{ weatherData.sys.sunset * 1000 | date:'HH:mm' }}</p>
+        <p>{{ weatherData.sys.sunriseLocalTime | date:'HH:mm':'UTC' }} - {{ weatherData.sys.sunsetLocalTime | date:'HH:mm':'UTC' }}</p>
       </div>
   
-      <!-- Treći stupac -->
       <div class="sun-column">
         <mat-icon class="moon-icon">dark_mode</mat-icon>
         <p>Zalazak sunca</p>
@@ -78,8 +76,7 @@
   </mat-card>
 
 
-
-  <!-- Sekcija 1: Prognoza po satima -->
+  <!-- Prognoza po satima -->
 <mat-card class="hourly-forecast">
   <mat-grid-list cols="8" rowHeight="200px" class="hourly-grid">
     <mat-grid-tile *ngFor="let forecast of hourlyForecast">
@@ -96,7 +93,7 @@
   </mat-grid-list>
 </mat-card>
 
-<!-- Sekcija 2: Prognoza za 5 dana -->
+<!-- Prognoza za 5 dana -->
 <mat-card class="daily-forecast">
   <mat-grid-list cols="1" rowHeight="50px" class="daily-grid">
     <mat-grid-tile *ngFor="let forecast of dailyForecast">
