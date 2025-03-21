@@ -16,9 +16,9 @@ export class ApiService {
         return this.http.get<City[]>(`${apiurl}/City/cityData?name=${city}`);
     }
 
-    getWeatherData(lat: number, lon: number): Observable<WeatherData[]>
+    getWeatherData(city: City): Observable<WeatherData[]>
     {
-        return this.http.get<WeatherData[]>(`${apiurl}/Weather/cityWeather?lat=${lat}&lon=${lon}`);
+        return this.http.post<WeatherData[]>(`${apiurl}/Weather/cityWeather`, city);
     }
       
 }
