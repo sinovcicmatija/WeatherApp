@@ -63,3 +63,5 @@ C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\refint\Weath
 C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\WeatherAPI.pdb
 C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\WeatherAPI.genruntimeconfig.cache
 C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\obj\Debug\net8.0\ref\WeatherAPI.dll
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
+C:\ucenje\weatherApp\backend\WeatherAPI\WeatherAPI\bin\Debug\net8.0\StackExchange.Redis.dll

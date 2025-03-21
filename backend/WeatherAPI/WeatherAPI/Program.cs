@@ -1,6 +1,7 @@
 ﻿
 using WeatherAPI.Interfaces;
 using WeatherAPI.Services;
+using StackExchange.Redis;
 
 namespace WeatherAPI
 {
@@ -11,6 +12,8 @@ namespace WeatherAPI
             var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect("localhost:6379"));
 
             // Add services to the container.
 
@@ -27,6 +30,7 @@ namespace WeatherAPI
 
             builder.Services.AddControllers();
             builder.Services.AddHttpClient<WeatherApiClientService>();
+            builder.Services.AddSingleton<IRedisCacheService, RedisCacheService>();
             builder.Services.AddScoped<ICityService, CityService>();
             builder.Services.AddScoped<IWeatherService, WeatherService>();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
