@@ -6,8 +6,19 @@
   <span class="spacer"></span>
   <mat-form-field appearance="outline">
     <mat-label>Pretraži grad</mat-label>
-    <input matInput placeholder="Upiši grad...">
+    <input 
+      matInput 
+      [formControl]="searchControl" 
+      placeholder="Upiši grad..." 
+      [matAutocomplete]="auto">
+
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onCitySelected($event)" [displayWith]="displayFn">
+      <mat-option *ngFor="let city of cities$ | async" [value]="city">
+        {{ city.name }} ({{ city.country }})
+      </mat-option>
+    </mat-autocomplete>
   </mat-form-field>
+
   <button mat-icon-button aria-label="Search">
     <mat-icon>search</mat-icon>
   </button>
