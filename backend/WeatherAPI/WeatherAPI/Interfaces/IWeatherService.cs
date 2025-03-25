@@ -5,6 +5,6 @@ namespace WeatherAPI.Interfaces
 {
     public interface IWeatherService
     {
-        Task<WeatherData?> GetCityWeatherDataAsync(double lat, double lon);
+        Task<WeatherData?> GetCityWeatherDataAsync(CityItem city);
     }
 }

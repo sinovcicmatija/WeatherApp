@@ -1,2 +1,113 @@
+<div class="weather-container" *ngIf="weatherData">
+  <!-- Glavna kartica - Grad, temperatura, ikona, opis -->
+  <mat-card class="weather-card-main">
+    <mat-card-header>
+      <mat-card-title>{{selectedCity?.name}}, {{weatherData.sys.country}} <img [src]="'https://flagsapi.com/' + weatherData.sys.country + '/flat/32.png'" alt="Country Flag">
+      </mat-card-title>
+    </mat-card-header>
 
-<p>Zagreb: Sunčano!</p>
+    <mat-card-content>
+      <div class="main-weather">
+        <div class="weather-temp">
+          <img [src]="'https://openweathermap.org/img/wn/' + weatherData.weather[0].icon + '@2x.png'" alt="Weather Icon">
+
+          <p>{{weatherData.main.temp | number: '1.0-0'}}°</p>
+        </div>
+        <div class="weather-info">
+          <p>{{weatherData.main.temp_min | number: '1.0-0'}}° / {{weatherData.main.temp_max | number: '1.0-0'}}°  Čini se kao {{weatherData.main.feels_like | number: '1.0-0'}}°</p>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Kartice za dodatne vremenske informacije -->
+  <div class="weather-details">
+    <mat-card class="weather-card-detail">
+      <mat-card-header class="card-header">
+        <mat-icon>water_drop</mat-icon>
+        <mat-card-title>Vlaga</mat-card-title>
+      </mat-card-header>
+      <mat-card-content><p>{{weatherData.main.humidity}}</p></mat-card-content>
+    </mat-card>
+
+    <mat-card class="weather-card-detail">
+      <mat-card-header class="card-header">
+        <mat-icon>air</mat-icon>
+        <mat-card-title>Vjetar</mat-card-title>
+      </mat-card-header>
+      <mat-card-content><p>{{weatherData.wind.speed}} m/s</p></mat-card-content>
+    </mat-card>
+
+    <mat-card class="weather-card-detail">
+      <mat-card-header class="card-header">
+        <mat-icon>speed</mat-icon>
+        <mat-card-title>Tlak</mat-card-title>
+      </mat-card-header>
+      <mat-card-content><p>{{weatherData.main.pressure}} hPa</p></mat-card-content>
+    </mat-card>
+
+    <mat-card class="weather-card-detail">
+      <mat-card-header class="card-header">
+        <mat-icon>remove_red_eye</mat-icon>
+        <mat-card-title>Vidljivost</mat-card-title>
+      </mat-card-header>
+      <mat-card-content><p>{{weatherData.visibility / 1000 | number:'1.1-1'}} km</p></mat-card-content>
+    </mat-card>
+
+   
+  </div>
+  <mat-card class="weather-card-sun">
+    <div class="sun-info">
+
+      <div class="sun-column">
+        <mat-icon class="sun-icon">wb_sunny</mat-icon>
+        <p>Izlazak sunca</p>
+      </div>
+  
+      <div class="sun-time">
+        <p>{{ weatherData.sys.sunriseLocalTime | date:'HH:mm':'UTC' }} - {{ weatherData.sys.sunsetLocalTime | date:'HH:mm':'UTC' }}</p>
+      </div>
+  
+      <div class="sun-column">
+        <mat-icon class="moon-icon">dark_mode</mat-icon>
+        <p>Zalazak sunca</p>
+      </div>
+    </div>
+  </mat-card>
+
+
+  <!-- Prognoza po satima -->
+<mat-card class="hourly-forecast">
+  <mat-grid-list cols="8" rowHeight="200px" class="hourly-grid">
+    <mat-grid-tile *ngFor="let forecast of hourlyForecast">
+      <mat-card class="hour-card">
+        <p>{{ forecast.time }}</p>
+        <img [src]="'https://openweathermap.org/img/wn/10d@2x.png'" alt="Weather Icon">
+        <p>{{ forecast.temp }}°</p>
+        <mat-card-footer>
+          <mat-icon>water_drop</mat-icon>
+          <p>{{ forecast.rainChance }}%</p>
+        </mat-card-footer>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card>
+
+<!-- Prognoza za 5 dana -->
+<mat-card class="daily-forecast">
+  <mat-grid-list cols="1" rowHeight="50px" class="daily-grid">
+    <mat-grid-tile *ngFor="let forecast of dailyForecast">
+      <p class="daily-day">{{ forecast.day }}</p>
+      <img [src]="'https://openweathermap.org/img/wn/10d@2x.png'" alt="Weather Icon" class="daily-icon">
+      <div class="daily-rain">
+        <mat-icon>water_drop</mat-icon>
+        <p>{{ forecast.rainChance }}%</p>
+      </div>
+      <p class="daily-temp">{{ forecast.minTemp }}° / {{ forecast.maxTemp }}°</p>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card>
+
+
+  
+</div>

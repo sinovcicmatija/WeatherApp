@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WeatherAPI.Interfaces;
+using WeatherAPI.Models;
 
 namespace WeatherAPI.Controllers
 {
@@ -17,14 +18,14 @@ namespace WeatherAPI.Controllers
         }
 
 
-        [HttpGet]
+        [HttpPost]
         [Route("cityWeather")]
 
-        public async Task<IActionResult> GetWeather([FromQuery] double lat, double lon)
+        public async Task<IActionResult> GetWeather([FromBody] CityItem city)
         {
             try
             {
-                var cityWeather = await _weatherService.GetCityWeatherDataAsync(lat, lon);
+                var cityWeather = await _weatherService.GetCityWeatherDataAsync(city);
 
                 if(cityWeather == null)
                 {
