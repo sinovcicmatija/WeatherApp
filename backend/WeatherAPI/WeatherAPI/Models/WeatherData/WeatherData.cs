@@ -16,6 +16,9 @@ namespace WeatherAPI.Models.WeatherData
         [JsonPropertyName("visibility")]
         public int Visibility { get; set; }
 
+        [JsonPropertyName("pop")]
+        public double? Pop { get; set; }
+
         [JsonPropertyName("wind")]
         public Wind? Wind { get; set; }
 

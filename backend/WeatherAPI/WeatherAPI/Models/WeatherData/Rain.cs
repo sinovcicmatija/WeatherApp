@@ -6,5 +6,9 @@ namespace WeatherAPI.Models.WeatherData
     {
         [JsonPropertyName("1h")]
         public double? LastHour { get; set; }
+
+        [JsonPropertyName("3h")]
+        public double? LastThreehours { get; set; }
+
     }
 }
